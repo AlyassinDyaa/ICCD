@@ -6,9 +6,6 @@ const Donation = () => {
   const [selected, setSelected] = useState<number | null>(50)
   const [custom, setCustom] = useState('')
 
-  const chosenAmount = selected ?? (custom ? Number(custom) : null)
-  const amountLabel = chosenAmount && Number.isFinite(chosenAmount) ? `$${chosenAmount}` : 'Choose amount'
-
   return (
     <section className="donation section-bg" aria-label="Donation">
       <div className="container">
