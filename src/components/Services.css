@@ -1,0 +1,172 @@
+.services {
+  padding: var(--section-pad-y) 0;
+  background: transparent; /* Home provides the one smooth background */
+}
+
+.services-navbtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(13, 107, 45, 0.25);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: var(--transition);
+}
+
+.services-navbtn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-light);
+  border-color: rgba(13, 107, 45, 0.45);
+}
+
+.services-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(340px, 1fr); /* wider cards */
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.service-card {
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  height: 470px; /* make card longer */
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+  border-color: rgba(13, 107, 45, 0.25);
+}
+
+.service-image {
+  display: none;
+}
+
+.service-media {
+  height: 300px; /* slightly taller */
+  background: linear-gradient(
+    180deg,
+    rgba(13, 107, 45, 0.22) 0%,
+    rgba(231, 244, 236, 0.85) 45%,
+    rgba(251, 250, 241, 0.8) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0;
+  position: relative;
+}
+
+.service-media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* unify photos a bit so they feel like one set */
+  filter: saturate(0.85) contrast(1.06);
+}
+
+.service-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* consistent brand-tinted hue overlay across all photos */
+  background: linear-gradient(
+    180deg,
+    rgba(13, 107, 45, 0.58) 0%,
+    rgba(13, 107, 45, 0.36) 48%,
+    rgba(0, 0, 0, 0.42) 100%
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.service-media-title {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 950;
+  letter-spacing: 0.02em;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  /* add extra contrast behind text without changing card layout */
+  background: radial-gradient(
+    closest-side at 50% 50%,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.22) 42%,
+    rgba(0, 0, 0, 0) 72%
+  );
+  text-shadow: 0 4px 22px rgba(0, 0, 0, 0.75);
+  -webkit-text-stroke: 0.6px rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.service-media-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+.service-content {
+  padding: 14px 16px; /* slightly tighter to keep cards shorter */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.service-content p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.service-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--brand-green);
+  font-weight: 900;
+  transition: var(--transition);
+  margin-top: auto; /* push CTA to bottom for consistent height */
+}
+
+.service-card:hover .service-cta {
+  color: var(--brand-green-dark);
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .services-controls {
+    align-self: center;
+  }
+}
