@@ -166,7 +166,7 @@ body::before {
   .section-head--with-controls .section-title {
     padding-right: 0;
     padding-left: 0;
-  }
+}
 
   .section-head-controls {
     position: static;
