@@ -94,9 +94,12 @@ const usePrayerTimes = (
         const data: PrayerTimesResponse = await response.json()
 
         if (data.code === 200) {
-          const sanitized: PrayerTimes = Object.fromEntries(
-            Object.entries(data.data.timings).map(([k, v]) => [k, v ? stripTimeSuffix(v) : v])
-          )
+          // Keep the strong PrayerTimes type (Object.fromEntries loses it)
+          const sanitized: PrayerTimes = { ...data.data.timings }
+          for (const k of Object.keys(sanitized)) {
+            const v = sanitized[k]
+            sanitized[k] = v ? stripTimeSuffix(v) : v
+          }
 
           setPrayerTimes(sanitized)
           setMeta({
